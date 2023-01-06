@@ -19,6 +19,7 @@ public class CantonControl {
     private CantonServiceImpl cantonServiceImpl = new CantonServiceImpl();
     private ProvinciaServiceImpl provinciaServiceImpl = new ProvinciaServiceImpl();
 
+
     public CantonControl() {
         this.cantonServiceImpl = new CantonServiceImpl();
     }

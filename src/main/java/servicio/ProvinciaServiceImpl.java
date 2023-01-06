@@ -14,15 +14,18 @@ import modelo.Provincia;
  */
 public class ProvinciaServiceImpl implements ProvinciaService {
     
-   public static List<Provincia> provinciaList = new ArrayList<>();
+   private static List<Provincia> provinciaList;
+    
 
     public ProvinciaServiceImpl() {
-
+        this.provinciaList = new ArrayList<>();
+        
     }
 
     @Override
     public void crear(Provincia provincia) {
         this.provinciaList.add(provincia);
+        
     }
 
     @Override
@@ -30,43 +33,27 @@ public class ProvinciaServiceImpl implements ProvinciaService {
         return this.provinciaList;
     }
 
-    public Provincia ProvinciaCodigo(int codigo) {
-        Provincia retorno = null;
-        for (var provincia : this.provinciaList) {
-            if (codigo == provincia.getCodigo()) {
-                retorno = provincia;
-                break;
-
-            }
-        }
-        return retorno;
-    }
-
     @Override
     public void modificar(Provincia provincia, int codigo) {
-        var indice = -1;
-        for (var paises : this.provinciaList) {
+    var indice = -1;
+        for (var provincias : this.provinciaList) {
             indice++;
-            if (codigo == paises.getCodigo()) {
+            if (codigo == provincias.getCodigoProvincia()) {
                 this.provinciaList.set(indice, provincia);
-
             }
-
-        }
-    }
+        } }
 
     @Override
     public void eliminar(int codigo) {
         var indice = -1;
         for (var provincias : this.provinciaList) {
             indice++;
-            if (codigo == provincias.getCodigo()) {
+            if (codigo == provincias.getCodigoProvincia()) {
                 this.provinciaList.remove(indice);
 
             }
 
         }
-
     }
 
 }

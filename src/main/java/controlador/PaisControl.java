@@ -15,7 +15,12 @@ import servicio.PaisServiceImpl;
  */
 public class PaisControl {
 
-    private PaisServiceImpl paisServiceImpl = new PaisServiceImpl();
+    private final PaisServiceImpl paisServiceImpl;
+    
+    public PaisControl() {
+        this.paisServiceImpl = new PaisServiceImpl();
+
+    }
 
     public String crear(String[] data) {
         var retorno = "No se puede crear Pais";
@@ -90,6 +95,9 @@ public class PaisControl {
         this.paisServiceImpl.eliminar(codigo);
 
     }
-   
 
+    public Object Listar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+  
 }

@@ -14,11 +14,14 @@ import modelo.Pais;
  */
 public class PaisServiceImpl implements PaisService {
     
-    private static List<Pais> paisList = new ArrayList<>();
+    private static List<Pais> paisList;
+
+    public PaisServiceImpl() {
+        this.paisList = new ArrayList<>();
+    }
 
     @Override
     public void crear(Pais pais) {
-
         this.paisList.add(pais);
     }
 
@@ -28,29 +31,39 @@ public class PaisServiceImpl implements PaisService {
     }
 
     @Override
-    public Pais PaisCodigo(int codigo) {
+    public Pais buscarPorCodigo(int codigo) {
         Pais retorno = null;
         for (var pais : this.paisList) {
-            if (codigo == pais.getCodigo()) {
+            if (codigo == pais.getCodigoPais()) {
                 retorno = pais;
                 break;
-
             }
         }
         return retorno;
     }
 
     @Override
-    public void modificar(Pais pais, int codigo) {
+    public Pais buscarPorNombre(String nombre) {
+        Pais retorno = null;
 
+        for (var pais : this.paisList) {
+            if (nombre.equals(pais.getNombrePais())) {
+                retorno = pais;
+                break;
+            }
+        }
+
+        return retorno;
+    }
+
+    @Override
+    public void modificar(Pais pais, int codigo) {
         var indice = -1;
         for (var paises : this.paisList) {
             indice++;
-            if (codigo == paises.getCodigo()) {
+            if (codigo == paises.getCodigoPais()) {
                 this.paisList.set(indice, pais);
-
             }
-
         }
     }
 
@@ -59,7 +72,7 @@ public class PaisServiceImpl implements PaisService {
         var indice = -1;
         for (var paises : this.paisList) {
             indice++;
-            if (codigo == paises.getCodigo()) {
+            if (codigo == paises.getCodigoPais()) {
                 this.paisList.remove(indice);
 
             }
@@ -68,4 +81,3 @@ public class PaisServiceImpl implements PaisService {
     }
 
 }
-

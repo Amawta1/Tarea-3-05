@@ -15,10 +15,12 @@ public class Principal {
     public static void main(String[] args) {
         
         var ventanaPais = new VentanaPais();
-        var ventanaProvincia = new VentanaProvincia();
-        var ventanaCanton = new VentanaCanton();
         ventanaPais.setVisible(true);
+        
+        var ventanaProvincia = new VentanaProvincia();
         ventanaProvincia.setVisible(true);
+        
+        var ventanaCanton = new VentanaCanton();
         ventanaCanton.setVisible(true);
         
     }

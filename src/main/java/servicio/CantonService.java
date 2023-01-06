@@ -13,12 +13,14 @@ import modelo.Canton;
  */
 public interface CantonService {
     
-    public void crear(Canton canton);
+    public abstract void crear(Canton canton);
 
+    public Canton buscarPorCodigo(int codigo);
+    public Canton buscarPorNombre(String nombre);
     public void modificar(Canton canton, int codigo);
 
     public void eliminar(int codigo);
 
-    public List<Canton> listar();
+    public abstract List<Canton> listar();
     
 }

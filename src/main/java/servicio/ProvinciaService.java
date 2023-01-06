@@ -13,14 +13,11 @@ import modelo.Provincia;
  */
 public interface ProvinciaService {
     
-    public void crear(Provincia provincia);
+    public abstract void crear(Provincia provincia);
+
+    public abstract List<Provincia> listar();
 
     public void modificar(Provincia provincia, int codigo);
 
     public void eliminar(int codigo);
-
-    public List<Provincia> listar();
-
-    public Provincia ProvinciaCodigo(int codigo);
-    
 }

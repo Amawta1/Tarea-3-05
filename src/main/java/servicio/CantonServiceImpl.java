@@ -14,7 +14,7 @@ import modelo.Canton;
  */
 public class CantonServiceImpl implements CantonService {
     
-   public List<Canton> cantonList;
+   private static List<Canton> cantonList;
 
     public CantonServiceImpl() {
         this.cantonList = new ArrayList<>();
@@ -25,41 +25,58 @@ public class CantonServiceImpl implements CantonService {
         this.cantonList.add(canton);
     }
 
-    /**
-     *
-     * @return
-     */
-   
+    @Override
+    public Canton buscarPorCodigo(int codigo) {
+        Canton retorno = null;
+        for (var canton : this.cantonList) {
+            if (codigo == canton.getCodigoCanton()) {
+                retorno = canton;
+                break;
+            }
+        }
+        return retorno;
+    }
+
+    @Override
+    public List<Canton> listar() {
+        return this.cantonList;
+    }
+
+    @Override
+    public Canton buscarPorNombre(String nombre) {
+        Canton retorno = null;
+
+        for (var canton : this.cantonList) {
+            if (nombre.equals(canton.getNombreCanton())) {
+                retorno = canton;
+                break;
+            }
+        }
+
+        return retorno;
+    }
 
     @Override
     public void modificar(Canton canton, int codigo) {
         var indice = -1;
         for (var cantones : this.cantonList) {
             indice++;
-            if (codigo == cantones.getCodigo()) {
+            if (codigo == cantones.getCodigoCanton()) {
                 this.cantonList.set(indice, canton);
-
             }
-
         }
     }
 
     @Override
     public void eliminar(int codigo) {
         var indice = -1;
-        for (var canton : this.cantonList) {
+        for (var cantones : this.cantonList) {
             indice++;
-            if (codigo == canton.getCodigo()) {
+            if (codigo == cantones.getCodigoCanton()) {
                 this.cantonList.remove(indice);
 
             }
 
         }
     }
-
-    @Override
-    public List<Canton> listar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }
