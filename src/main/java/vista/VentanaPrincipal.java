@@ -17,7 +17,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaPaisEliminar ventanaPaisEliminar;
     private VentanaPaisListar ventanaPaisListar;
 
-    /*private VentanaProvinciaCrear ventanaProvinciaCrear;
+    private VentanaProvinciaCrear ventanaProvinciaCrear;
     private VentanaProvinciaModificar ventanaProvinciaModificar;
     private VentanaProvinciaEliminar ventanaProvinciaEliminar;
     private VentanaProvinciaListar ventanaProvinicaListar;
@@ -25,7 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaCantonCrear ventanaCantonCrear;
     private VentanaCantonModificar ventanaCantonModificar;
     private VentanaCantonEliminar ventanaCantonEliminar;
-    private VentanaCantonListar ventanaCantonListar;*/
+    private VentanaCantonListar ventanaCantonListar;
     /**
      * Creates new form VentanaPrincipal
      */
