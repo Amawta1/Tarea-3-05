@@ -9,22 +9,22 @@ package modelo;
  * @author USUARIO
  */
 public class Provincia {
-    
+
     private String nombre;
     private double expancionTerritorial;
-    private int inicioCedula;
     private Pais pais;
     private double nroHabitantes;
+    private int codigo;
 
-public Provincia(String nombre, double expancionTerritorial, int inicioCedula, Pais pais, double nroHabitantes) {
+    public Provincia(String nombre, double expancionTerritorial, Pais pais, double nroHabitantes, int codigo) {
         this.nombre = nombre;
         this.expancionTerritorial = expancionTerritorial;
-        this.inicioCedula = inicioCedula;
         this.pais = pais;
         this.nroHabitantes = nroHabitantes;
+        this.codigo = codigo;
     }
 
-    public Provincia(String nombre, double expancionTerritorial, String inicioCedula, String pais, double nroHabitantes) {
+    public Provincia(String nombre, double expancionTerritorial, String pais, double nroHabitantes, int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -44,14 +44,6 @@ public Provincia(String nombre, double expancionTerritorial, int inicioCedula, P
         this.expancionTerritorial = expancionTerritorial;
     }
 
-    public int getInicioCedula() {
-        return inicioCedula;
-    }
-
-    public void setInicioCedula(int inicioCedula) {
-        this.inicioCedula = inicioCedula;
-    }
-
     public Pais getPais() {
         return pais;
     }
@@ -68,24 +60,23 @@ public Provincia(String nombre, double expancionTerritorial, int inicioCedula, P
         this.nroHabitantes = nroHabitantes;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     @Override
     public String toString() {
-        return "Provincia{" + "nombre=" + nombre + ", expancionTerritorial=" + expancionTerritorial + ", inicioCedula=" + inicioCedula + ", pais=" + pais + ", nroHabitantes=" + nroHabitantes + '}';
-    }
-
-    public int getCodigo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Object getCedula() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "Provincia{" + "nombre=" + nombre + ", expancionTerritorial=" + 
+                expancionTerritorial + ", pais=" + pais + ", nroHabitantes=" + 
+                nroHabitantes + ", codigo=" + codigo + '}';
     }
 
     public int getCodigoProvincia() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-
-
 }
-

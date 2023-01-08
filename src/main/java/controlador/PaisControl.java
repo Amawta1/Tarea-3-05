@@ -15,24 +15,22 @@ import servicio.PaisServiceImpl;
  */
 public class PaisControl {
 
-    private final PaisServiceImpl paisServiceImpl;
+    private PaisServiceImpl paisServiceImpl = new PaisServiceImpl();
+   
     
-    public PaisControl() {
-        this.paisServiceImpl = new PaisServiceImpl();
-
-    }
 
     public String crear(String[] data) {
         var retorno = "No se puede crear Pais";
         
         var nroProvincia = Integer.valueOf(data[0]).intValue();
-        var capital = Integer.valueOf(data[1]).intValue();
+        var capital = data[1];
         var year = Integer.valueOf(data[2]).intValue();
         var mes = Integer.valueOf(data[3]).intValue();
         var dia = Integer.valueOf(data[4]).intValue();
         var presidente = data[5];
         var continente = data[6];
         var nombre = data[7];
+        var codigo = Integer.valueOf(data[8]).intValue();
         
         if (year > LocalDate.now().getYear()) {
             retorno += " El año no es valido ";
@@ -46,8 +44,9 @@ public class PaisControl {
                     if (nroProvincia < 0) {
                         retorno += " El numero de provincia no es valido";
                     } 
-                    var pais = new Pais(nroProvincia, capital,LocalDate.of(year, mes, dia), presidente, continente, nombre);
+                    var pais = new Pais(nroProvincia, capital,LocalDate.of(year, mes, dia), presidente, continente, nombre,codigo);
                     this.paisServiceImpl.crear(pais);
+                    retorno = "Pais creado exitosamente";
                 }
             }
         }
@@ -58,7 +57,7 @@ public class PaisControl {
         return this.paisServiceImpl.listar();
 
     }
-    public String modificar(String[] data) {
+    public String modificar(String[] data, int paisModificado) {
         var retorno = "No se puede crear Pais";
         
         var nroProvincia = Integer.valueOf(data[0]).intValue();
@@ -69,6 +68,7 @@ public class PaisControl {
         var presidente = data[5];
         var continente = data[6];
         var nombre = data[7];
+        var codigo = Integer.valueOf(data[8]).intValue();
         
         if (year > LocalDate.now().getYear()) {
             retorno += " El año no es valido ";
@@ -82,8 +82,9 @@ public class PaisControl {
                     if (nroProvincia < 0) {
                         retorno += " El numero de provincia no es valido";
                     } 
-                    var pais = new Pais(nroProvincia, capital,LocalDate.of(year, mes, dia), presidente, continente, nombre);
-                    this.paisServiceImpl.crear(pais);
+                    var pais = new Pais(nroProvincia, capital,LocalDate.of(year, mes, dia), presidente, continente, nombre,codigo);
+                    this.paisServiceImpl.modificar(pais, paisModificado);
+                    retorno = "Pais modificado exitosamente";
                 }
             }
         }
@@ -94,10 +95,6 @@ public class PaisControl {
         var codigo = Integer.valueOf(codigos).intValue();
         this.paisServiceImpl.eliminar(codigo);
 
-    }
-
-    public Object Listar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
   
 }

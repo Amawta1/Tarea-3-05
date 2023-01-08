@@ -17,24 +17,18 @@ public class Canton {
     private LocalDate yearFundacion;
     private double nroHabitantes;
     private Provincia provincia;
+    private int codigo;
 
-public Canton(String nombre, double expancionTerritorial, double nroHabitantes, Pais pais, Provincia provincia) {
+public Canton(String nombre, double expancionTerritorial, double nroHabitantes, Pais pais, Provincia provincia,int codigo) {
         this.nombre = nombre;
         this.expancionTerritorial = expancionTerritorial;
         this.yearFundacion = yearFundacion;
         this.nroHabitantes = nroHabitantes;
         this.provincia = provincia;
+        this.codigo = codigo;
     }
 
-    public Canton(String nombre, int expancionTerritorial, int nroHabitantes, String pais, String provincia) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Canton(String nombre, int expancionTerritorial, LocalDate of) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public Canton(String nombre, int expancionTerritorial, LocalDate of, int nroHabitantes, String pais, String provincia) {
+    public Canton(String nombre, int expancionTerritorial, LocalDate of, int nroHabitantes, String pais, String provincia, int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -78,13 +72,21 @@ public Canton(String nombre, double expancionTerritorial, double nroHabitantes, 
         this.provincia = provincia;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     @Override
     public String toString() {
         return "Canton{" + "nombre=" + nombre + ", expancionTerritorial=" 
                 + expancionTerritorial + ", yearFundacion=" + yearFundacion 
-                + ", nroHabitantes=" + nroHabitantes + ", provincia=" + provincia + '}';
+                + ", nroHabitantes=" + nroHabitantes + ", provincia=" + provincia 
+                + ", codigo=" + codigo + '}';
     }
- 
     public int yearCanton() {
         var years = LocalDate.now().getYear() - this.yearFundacion.getYear();
         if (this.yearFundacion.getMonthValue() < LocalDate.now().getMonthValue()) {
@@ -97,11 +99,6 @@ public Canton(String nombre, double expancionTerritorial, double nroHabitantes, 
 
         }
         return years;
-        
-    }
-
-    public int getCodigo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getCodigoCanton() {
@@ -111,5 +108,4 @@ public Canton(String nombre, double expancionTerritorial, double nroHabitantes, 
     public Object getNombreCanton() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }

@@ -35,6 +35,7 @@ public class CantonControl {
         var nroHabitantes=Integer.valueOf(data[5]).intValue();//double
         var pais=data[6];
         var provincia=data[7];
+        var codigo = Integer.valueOf(data[8]).intValue();
         
         if (year > LocalDate.now().getYear()) {
             retorno += " El año no es valido ";
@@ -51,8 +52,9 @@ public class CantonControl {
                         if (expancionTerritorial <= 0 || expancionTerritorial > 300000000) {
                             retorno += " No existe la expancion territorial";
                             }
-                             var canton=new Canton(nombre, expancionTerritorial,LocalDate.of(year,mes,dia), nroHabitantes, pais, provincia );
+                             var canton=new Canton(nombre, expancionTerritorial,LocalDate.of(year,mes,dia), nroHabitantes, pais, provincia,codigo );
                              this.cantonServiceImpl.crear(canton);
+                             retorno = "Canton creado exitosamente";
                     }
                 }
             }
@@ -60,7 +62,7 @@ public class CantonControl {
         }
         return retorno;
     }
-    public String modificar(String [] data){
+    public String modificar(String [] data, int cantonModificado){
         var retorno="No se puede crear el Canton";
         
         var nombre=data[0];
@@ -71,6 +73,7 @@ public class CantonControl {
         var nroHabitantes=Integer.valueOf(data[5]).intValue();//double
         var pais=data[6];
         var provincia=data[7];
+        var codigo = Integer.valueOf(data[8]).intValue();
         
         if (year > LocalDate.now().getYear()) {
             retorno += " El año no es valido ";
@@ -87,8 +90,9 @@ public class CantonControl {
                         if (expancionTerritorial <= 0 || expancionTerritorial > 300000000) {
                             retorno += " No existe la expancion territorial";
                             }
-                             var canton=new Canton(nombre, expancionTerritorial,LocalDate.of(year,mes,dia), nroHabitantes, pais, provincia );
-                             this.cantonServiceImpl.crear(canton);
+                             var canton=new Canton(nombre, expancionTerritorial,LocalDate.of(year,mes,dia), nroHabitantes, pais, provincia, codigo );
+                             this.cantonServiceImpl.modificar(canton, cantonModificado);
+                             retorno = "Canton modificado exitosamente";
                     }
                 }
             }
