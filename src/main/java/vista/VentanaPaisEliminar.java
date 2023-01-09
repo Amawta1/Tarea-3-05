@@ -4,17 +4,52 @@
  */
 package vista;
 
+import controlador.PaisControl;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author amawt
  */
 public class VentanaPaisEliminar extends javax.swing.JPanel {
+    
+    private PaisControl paisControl = new PaisControl();
+    private Component rootPane;
 
     /**
      * Creates new form VentanaPaisEliminar
      */
     public VentanaPaisEliminar() {
         initComponents();
+    }
+    
+    public void actualizarTabla() {
+        
+        var data = new Object[this.paisControl.listar().size()][7];
+        for (var i = 0; i < this.paisControl.listar().size(); i++) {
+            
+            data[i][0] = this.paisControl.listar().get(i).getNroProvincias();
+            data[i][1] = this.paisControl.listar().get(i).getCapital();
+            data[i][2] = this.paisControl.listar().get(i).getYearDescubrimiento().getYear();
+            data[i][3] = this.paisControl.listar().get(i).getPresidente();
+            data[i][4] = this.paisControl.listar().get(i).getContinente();
+            data[i][5] = this.paisControl.listar().get(i).getNombre();
+            data[i][6] = this.paisControl.listar().get(i).getCodigo();
+          
+        }
+        var encabezado = new String[9];
+        encabezado[0] = "Nombre del Continente";
+        encabezado[1] = "Nombre del Pais";
+        encabezado[2] = "Nombre del Presidente";
+        encabezado[3] = "Nombre de la capital";
+        encabezado[4] = "año";
+        encabezado[5] = "mes";
+        encabezado[6] = "dia";
+        encabezado[7] = "Nro.Provincias";
+        encabezado[8] = "Codigo";
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, encabezado));
     }
 
     /**
@@ -41,6 +76,11 @@ public class VentanaPaisEliminar extends javax.swing.JPanel {
         jLabel2.setText("Para eliminar ingrese el codigo:");
 
         jButton1.setText("ELIMINAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,6 +144,17 @@ public class VentanaPaisEliminar extends javax.swing.JPanel {
             .addComponent(jInternalFrame1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(JOptionPane.showConfirmDialog(this,"¿Está seguro de eliminar la Universidad?","Seleccione una opción...",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE)==0){
+        JOptionPane.showMessageDialog(rootPane, "La Universidad Eliminada con exito");    
+        var data = this.jTextField1.getText();
+        this.paisControl.eliminar(data);
+        this.actualizarTabla();
+        
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     void setResizable(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

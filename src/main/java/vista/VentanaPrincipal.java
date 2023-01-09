@@ -17,12 +17,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private VentanaPaisEliminar ventanaPaisEliminar;
     private VentanaPaisListar ventanaPaisListar;
 
-    private VentanaProvinciaCrear ventanaProvinciaCrear;
+    private VentanaProvinciaCrear ventanaProvincia;
     private VentanaProvinciaModificar ventanaProvinciaModificar;
     private VentanaProvinciaEliminar ventanaProvinciaEliminar;
-    private VentanaProvinciaListar ventanaProvinicaListar;
+    private VentanaProvinciaListar ventanaProvinciaListar;
 
-    private VentanaCantonCrear ventanaCantonCrear;
+    private VentanaCantonCrear ventanaCanton;
     private VentanaCantonModificar ventanaCantonModificar;
     private VentanaCantonEliminar ventanaCantonEliminar;
     private VentanaCantonListar ventanaCantonListar;
@@ -121,16 +121,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem5.setText("jMenuItem5");
+        jMenuItem5.setText("Crear");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setText("jMenuItem6");
+        jMenuItem6.setText("Modificar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
-        jMenuItem7.setText("jMenuItem7");
+        jMenuItem7.setText("Eliminar");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("jMenuItem8");
+        jMenuItem8.setText("Listar");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
@@ -142,16 +162,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem9.setText("jMenuItem9");
+        jMenuItem9.setText("Crear");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem9);
 
-        jMenuItem10.setText("jMenuItem10");
+        jMenuItem10.setText("Modificar");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem10);
 
-        jMenuItem11.setText("jMenuItem11");
+        jMenuItem11.setText("Eliminar");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem11);
 
-        jMenuItem12.setText("jMenuItem12");
+        jMenuItem12.setText("Listar");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem12);
 
         jMenuBar1.add(jMenu3);
@@ -236,6 +276,118 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         this.jDesktopPane1.add(this.ventanaPaisListar);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaProvinciaModificar = new VentanaProvinciaModificar();
+
+        ventanaProvinciaModificar.setVisible(true);
+
+        ventanaProvinciaModificar.setResizable(true);
+        ventanaProvinciaModificar.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaProvinciaModificar.setClosable(true);
+        ventanaProvinciaModificar.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaProvinciaModificar);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaCantonModificar = new VentanaCantonModificar();
+
+        ventanaCantonModificar.setVisible(true);
+
+        ventanaCantonModificar.setResizable(true);
+        ventanaCantonModificar.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaCantonModificar.setClosable(true);
+        ventanaCantonModificar.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaCantonModificar);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaProvincia = new VentanaProvinciaCrear();
+
+        ventanaProvincia.setVisible(true);
+
+        ventanaProvincia.setResizable(true);
+        ventanaProvincia.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaProvincia.setClosable(true);
+        ventanaProvincia.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaProvincia);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaProvinciaEliminar = new VentanaProvinciaEliminar();
+
+        ventanaProvinciaEliminar.setVisible(true);
+
+        ventanaProvinciaEliminar.setResizable(true);
+        ventanaProvinciaEliminar.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaProvinciaEliminar.setClosable(true);
+        ventanaProvinciaEliminar.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaProvinciaEliminar);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaProvinciaListar = new VentanaProvinciaListar();
+
+        ventanaProvinciaListar.setVisible(true);
+
+        ventanaProvinciaListar.setResizable(true);
+        ventanaProvinciaListar.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaProvinciaListar.setClosable(true);
+        ventanaProvinciaListar.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaProvinciaListar);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaCanton = new VentanaCantonCrear();
+
+        ventanaCanton.setVisible(true);
+
+        ventanaCanton.setResizable(true);
+        ventanaCanton.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaCanton.setClosable(true);
+        ventanaCanton.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaCanton);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaCantonEliminar = new VentanaCantonEliminar();
+
+        ventanaCantonEliminar.setVisible(true);
+
+        ventanaCantonEliminar.setResizable(true);
+        ventanaCantonEliminar.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaCantonEliminar.setClosable(true);
+        ventanaCantonEliminar.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaCantonEliminar);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        this.ventanaCantonListar = new VentanaCantonListar();
+
+        ventanaCantonListar.setVisible(true);
+
+        ventanaCantonListar.setResizable(true);
+        ventanaCantonListar.setDefaultCloseOperation(JInternalFrame.DISPOSE_ON_CLOSE);
+        ventanaCantonListar.setClosable(true);
+        ventanaCantonListar.setIconifiable(true);
+
+        this.jDesktopPane1.add(this.ventanaCantonListar);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,17 +4,47 @@
  */
 package vista;
 
+import controlador.CantonControl;
+
 /**
  *
  * @author amawt
  */
 public class VentanaCantonListar extends javax.swing.JInternalFrame {
+    
+    private CantonControl cantonControl = new CantonControl();
 
     /**
      * Creates new form VentanaCantonListar
      */
     public VentanaCantonListar() {
         initComponents();
+    }
+    
+    public void actualizarTabla (){
+        
+        var data = new Object[this.cantonControl.listar().size()][6];
+        for (var i = 0; i < this.cantonControl.listar().size(); i++) {
+            
+            data[i][0] = this.cantonControl.listar().get(i).getNombre();
+            data[i][1] = this.cantonControl.listar().get(i).getExpancionTerritorial();
+            data[i][2] = this.cantonControl.listar().get(i).getYearFundacion().getYear();
+            data[i][3] = this.cantonControl.listar().get(i).getNroHabitantes();
+            data[i][4] = this.cantonControl.listar().get(i).getProvincia();
+            data[i][5] = this.cantonControl.listar().get(i).getCodigo();
+        }
+        
+        var encabezado = new String[8];
+        encabezado[0] = "Nombre del Canton";
+        encabezado[1] = "Nro.Habitantes";
+        encabezado[2] = "Expancion Territorial";
+        encabezado[3] = "año";
+        encabezado[4] = "mes";
+        encabezado[5] = "dia";
+        encabezado[6] = "Codigo Provincia";
+        encabezado[7] = "Codigo";
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, encabezado));
     }
 
     /**
@@ -50,6 +80,11 @@ public class VentanaCantonListar extends javax.swing.JInternalFrame {
         jLabel1.setText("LISTA CANTON");
 
         jButton1.setText("MOSTRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -90,6 +125,11 @@ public class VentanaCantonListar extends javax.swing.JInternalFrame {
             .addComponent(jInternalFrame1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.actualizarTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

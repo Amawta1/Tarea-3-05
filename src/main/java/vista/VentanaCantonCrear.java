@@ -4,17 +4,48 @@
  */
 package vista;
 
+import controlador.CantonControl;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author amawt
  */
 public class VentanaCantonCrear extends javax.swing.JInternalFrame {
+    
+    private CantonControl cantonControl = new CantonControl();
 
     /**
      * Creates new form VentanaCantonCrear
      */
     public VentanaCantonCrear() {
         initComponents();
+    }
+    
+    public void actualizarTabla (){
+        
+        var data = new Object[this.cantonControl.listar().size()][6];
+        for (var i = 0; i < this.cantonControl.listar().size(); i++) {
+            
+            data[i][0] = this.cantonControl.listar().get(i).getNombre();
+            data[i][1] = this.cantonControl.listar().get(i).getExpancionTerritorial();
+            data[i][2] = this.cantonControl.listar().get(i).getYearFundacion().getYear();
+            data[i][3] = this.cantonControl.listar().get(i).getNroHabitantes();
+            data[i][4] = this.cantonControl.listar().get(i).getProvincia();
+            data[i][5] = this.cantonControl.listar().get(i).getCodigo();
+        }
+        
+        var encabezado = new String[8];
+        encabezado[0] = "Nombre del Canton";
+        encabezado[1] = "Nro.Habitantes";
+        encabezado[2] = "Expancion Territorial";
+        encabezado[3] = "año";
+        encabezado[4] = "mes";
+        encabezado[5] = "dia";
+        encabezado[6] = "Codigo Provincia";
+        encabezado[7] = "Codigo";
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, encabezado));
     }
 
     /**
@@ -91,6 +122,11 @@ public class VentanaCantonCrear extends javax.swing.JInternalFrame {
         jLabel10.setText("Codigo:");
 
         jButton1.setText("GUARDAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -199,6 +235,26 @@ public class VentanaCantonCrear extends javax.swing.JInternalFrame {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, "¿Está seguro de registar estos datos?", "Seleccione una opción...", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+
+            var data = new String[8];
+            data[0] = this.jTextField1.getText();
+            data[1] = this.jTextField2.getText();
+            data[2] = this.jTextField3.getText();
+            data[3] = this.jTextField4.getText();
+            data[4] = this.jTextField5.getText();
+            data[5] = this.jTextField6.getText();
+            data[6] = this.jTextField7.getText();
+            data[7] = this.jTextField8.getText();
+            
+            System.out.println(this.cantonControl.crear(data));
+            this.actualizarTabla();
+            JOptionPane.showMessageDialog(rootPane, "Canton creado con exito");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

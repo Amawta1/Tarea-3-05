@@ -57,7 +57,7 @@ public class PaisControl {
         return this.paisServiceImpl.listar();
 
     }
-    public String modificar(String[] data, int paisModificado) {
+    public String modificar(String[] data) {
         var retorno = "No se puede crear Pais";
         
         var nroProvincia = Integer.valueOf(data[0]).intValue();
@@ -69,6 +69,7 @@ public class PaisControl {
         var continente = data[6];
         var nombre = data[7];
         var codigo = Integer.valueOf(data[8]).intValue();
+        var paisModificado = Integer.valueOf(data[9]).intValue();
         
         if (year > LocalDate.now().getYear()) {
             retorno += " El año no es valido ";

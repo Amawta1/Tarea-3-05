@@ -4,17 +4,51 @@
  */
 package vista;
 
+import controlador.CantonControl;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author amawt
  */
 public class VentanaCantonModificar extends javax.swing.JPanel {
+    
+    private CantonControl cantonControl = new CantonControl();
+    private Component rootPane;
+    
 
     /**
      * Creates new form VentanaCantonModificar
      */
     public VentanaCantonModificar() {
         initComponents();
+    }
+    
+    public void actualizarTabla (){
+        
+        var data = new Object[this.cantonControl.listar().size()][6];
+        for (var i = 0; i < this.cantonControl.listar().size(); i++) {
+            
+            data[i][0] = this.cantonControl.listar().get(i).getNombre();
+            data[i][1] = this.cantonControl.listar().get(i).getExpancionTerritorial();
+            data[i][2] = this.cantonControl.listar().get(i).getYearFundacion().getYear();
+            data[i][3] = this.cantonControl.listar().get(i).getNroHabitantes();
+            data[i][4] = this.cantonControl.listar().get(i).getProvincia();
+            data[i][5] = this.cantonControl.listar().get(i).getCodigo();
+        }
+        
+        var encabezado = new String[8];
+        encabezado[0] = "Nombre del Canton";
+        encabezado[1] = "Nro.Habitantes";
+        encabezado[2] = "Expancion Territorial";
+        encabezado[3] = "año";
+        encabezado[4] = "mes";
+        encabezado[5] = "dia";
+        encabezado[6] = "Codigo Provincia";
+        encabezado[7] = "Codigo";
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, encabezado));
     }
 
     /**
@@ -107,6 +141,11 @@ public class VentanaCantonModificar extends javax.swing.JPanel {
         jLabel11.setText("Para modificar ingrese el codigo anterior: ");
 
         jButton1.setText("MODIFICAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -238,6 +277,25 @@ public class VentanaCantonModificar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, "¿Está seguro de modificar Canton?", "Seleccione una opción...", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+            var data = new String[8];
+            data[0] = this.jTextField1.getText();
+            data[1] = this.jTextField2.getText();
+            data[2] = this.jTextField3.getText();
+            data[3] = this.jTextField4.getText();
+            data[4] = this.jTextField5.getText();
+            data[5] = this.jTextField6.getText();
+            data[6] = this.jTextField7.getText();
+            data[7] = this.jTextField8.getText();
+            
+            System.out.println(this.cantonControl.modificar(data));
+            this.actualizarTabla();
+            JOptionPane.showMessageDialog(rootPane, "Canton modificado con exito");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -265,4 +323,20 @@ public class VentanaCantonModificar extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    void setResizable(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setDefaultCloseOperation(int DISPOSE_ON_CLOSE) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setClosable(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    void setIconifiable(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

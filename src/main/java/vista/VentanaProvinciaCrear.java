@@ -4,17 +4,43 @@
  */
 package vista;
 
+import controlador.ProvinciaControl;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author amawt
  */
 public class VentanaProvinciaCrear extends javax.swing.JInternalFrame {
+    
+    private ProvinciaControl provinciaControl = new ProvinciaControl();
 
     /**
      * Creates new form VentanaProvinciaCrear
      */
     public VentanaProvinciaCrear() {
         initComponents();
+    }
+    
+    public void actualizarTabla() {
+        
+        var data = new Object[this.provinciaControl.listar().size()][7];
+        for (var i = 0; i < this.provinciaControl.listar().size(); i++) {
+            
+            data[i][0] = this.provinciaControl.listar().get(i).getNombre();
+            data[i][2] = this.provinciaControl.listar().get(i).getExpancionTerritorial();
+            data[i][3] = this.provinciaControl.listar().get(i).getPais();
+            data[i][4] = this.provinciaControl.listar().get(i).getNroHabitantes();
+            data[i][5] = this.provinciaControl.listar().get(i).getCodigo();
+        
+        }
+        var encabezado = new String[4];
+        encabezado[0] = "Nombre de la Provincia";
+        encabezado[1] = "Nro.Habitantes";
+        encabezado[2] = "Codigo Pais";
+        encabezado[3] = "Codigo";
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(data, encabezado));
     }
 
     /**
@@ -66,6 +92,11 @@ public class VentanaProvinciaCrear extends javax.swing.JInternalFrame {
         jLabel5.setText("Codigo:");
 
         jButton1.setText("GUARDAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -138,6 +169,21 @@ public class VentanaProvinciaCrear extends javax.swing.JInternalFrame {
             .addComponent(jInternalFrame1)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(this, "¿Está seguro de registar estos datos?", "Seleccione una opción...", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+            var data = new String[4];
+            data[0] = this.jTextField1.getText();
+            data[1] = this.jTextField2.getText();
+            data[2] = this.jTextField3.getText();
+            data[3] = this.jTextField4.getText();
+            
+         this.provinciaControl.crear(data);
+            this.actualizarTabla();
+            JOptionPane.showMessageDialog(rootPane, "La Carrera creada con exito");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

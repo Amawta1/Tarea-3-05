@@ -40,13 +40,14 @@ public class ProvinciaControl {
         return retorno;     
     }
     
-    public String modificar(String [] data, int provinciaModificado){
+    public String modificar(String [] data){
         var retorno = "No se pudo crear la Provincia";
         var nombre=data[0];
         var expancionTerritorial=Double.valueOf(data[1]).doubleValue();//double
         var pais=data[2];
         var nroHabitantes=Double.valueOf(data[3]).doubleValue();//double
         var codigo = Integer.valueOf(data[4]).intValue();
+        var provinciaModificado = Integer.valueOf(data[5]).intValue();
         
         if (nroHabitantes < 0) {
             retorno += " El numero de Habitantes no son validos ";
